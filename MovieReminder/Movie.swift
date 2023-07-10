@@ -18,6 +18,6 @@ struct Movie: Decodable {
         var release_date: String
         var adult: Bool
         var overview: String
+        var poster_path: String
     }
-    
 }

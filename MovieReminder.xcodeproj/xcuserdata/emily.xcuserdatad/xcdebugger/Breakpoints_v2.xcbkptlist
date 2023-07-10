@@ -18,6 +18,38 @@
             endingLineNumber = "25"
             landmarkName = "auth()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "67FA0155-D5DD-43C3-B289-A0F36CE2B3E4 - 1ce6ad33e15f3091"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MovieReminder.ModelData.auth() -&gt; ()"
+                  moduleName = "MovieReminder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emily/Desktop/iosApp/MovieReminder/MovieReminder/ModelData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1304">
+               </Location>
+               <Location
+                  uuid = "67FA0155-D5DD-43C3-B289-A0F36CE2B3E4 - 1ce6ad33e15f3091"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MovieReminder.ModelData.auth() -&gt; ()"
+                  moduleName = "MovieReminder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emily/Desktop/iosApp/MovieReminder/MovieReminder/ModelData.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "1020">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
