@@ -14,8 +14,9 @@ struct MovieCard: View {
         HStack {
             AsyncImage(url: URL(string:"https://image.tmdb.org/t/p/w92" + movie.poster_path))
             VStack (alignment: .leading){
-                Text(movie.original_title).font(.title2)
-                Text(movie.release_date)
+                Text(movie.original_title).font(.title2).foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                Text(movie.release_date) .foregroundColor(.black)
             }
         }
     }

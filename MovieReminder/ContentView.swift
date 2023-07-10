@@ -10,27 +10,32 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     var body: some View {
-        ScrollView{
-            VStack {
-                HStack (alignment : .center){
-                    Image("ticket-pic")
-                        .resizable()
-                        .frame(width: 120, height: 100)
-                    Text("Upcoming Movies")
-                        .font(.title)
-                        .bold()
-                    
-                }
-                .frame(alignment: .leading)
-                
-                VStack(alignment: .leading) {
-                    ForEach((modelData.upcomingMovies.results)) { movie in
-                        MovieCard(movie: movie)
+        NavigationView {
+            ScrollView{
+                VStack (alignment: .leading){
+                    HStack (alignment : .center){
+                        Image("ticket-pic")
+                            .resizable()
+                            .frame(width: 120, height: 100)
+                        Text("Upcoming Movies")
+                            .font(.title)
+                            .bold()
+                        
                     }
-                    
-                    
+                    .frame(alignment: .leading)
+                    VStack(alignment: .leading) {
+                        ForEach((modelData.upcomingMovies.results)) { movie in
+                            NavigationLink {
+                                MovieDetail()
+                            } label: {
+                                MovieCard(movie: movie)
+                            }
+                        }
+                        
+                        
+                    }
+                    Spacer()
                 }
-                Spacer()
             }
         }
         .onAppear {
