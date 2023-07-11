@@ -10,7 +10,27 @@ import SwiftUI
 struct ReminderModal: View {
     @Binding var isPresented: Bool
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Set reminder for: ")
+                .fontDesign(.serif)
+                .font(.title2)
+                .padding(.bottom)
+            HStack {
+                Button(action: {
+                }, label: {
+                    Label("A WEEK BEFORE RELEASE", systemImage: "calendar")
+                        .foregroundColor(.blue)
+                })
+                .frame(maxWidth: .infinity, alignment: .center).padding()
+                
+                Button(action: {
+                }, label: {
+                    Label("A DAY BEFORE RELEASE", systemImage: "calendar")
+                        .foregroundColor(.blue)
+                })
+                .frame(maxWidth: .infinity, alignment: .center).padding()
+            }
+        }
     }
 }
 
