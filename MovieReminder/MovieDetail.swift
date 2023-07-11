@@ -9,35 +9,47 @@ import SwiftUI
 
 struct MovieDetail: View {
     @EnvironmentObject var modelData: ModelData
+    @State var showReminderModal: Bool = false
     var movie: Movie.movie
     var body: some View {
-        VStack (alignment: .center){
-            VStack (alignment: .trailing){
-                HStack{
-                    Spacer()
-                    Image(systemName: "bell")
-                        .foregroundColor(.blue)
-                    Button("Set Reminder") {
+        ScrollView{
+            VStack (alignment: .center){
+                VStack (alignment: .trailing){
+                    HStack{
+                        Spacer()
+                        /*Image(systemName: "bell")
+                            .foregroundColor(.blue)
+                        Button("Set Reminder") {
+                        }*/
+                        Button(action: {
+                            showReminderModal = true
+                        }, label: {
+                            Label("Set Reminder", systemImage: "bell")
+                                .foregroundColor(.blue)
+                        })
                     }
+                    .padding(.trailing)
                 }
-                .padding(.trailing)
-            }
-            
-            AsyncImage(url: URL(string:"https://image.tmdb.org/t/p/w300" + movie.poster_path))
-            Text(movie.original_title).font(.title).bold()
-                .padding([.bottom, .trailing],3)
-            Text("Release date: " + movie.release_date)
-                .padding([.bottom, .trailing],3)
-            if (movie.adult) {
-                Text("Appropriate to ages 18+")
+                .sheet(isPresented: $showReminderModal) {
+                    ReminderModal(isPresented: $showReminderModal)
+                }
+                
+                AsyncImage(url: URL(string:"https://image.tmdb.org/t/p/w300" + movie.poster_path))
+                Text(movie.original_title).font(.title).bold()
                     .padding([.bottom, .trailing],3)
+                Text("Release date: " + movie.release_date)
+                    .padding([.bottom, .trailing],3)
+                if (movie.adult) {
+                    Text("Appropriate to ages 18+")
+                        .padding([.bottom, .trailing],3)
+                }
+                Text("Synopsis: " + movie.overview)
+                    .padding([.bottom, .trailing],3)
+                
             }
-            Text("Synopsis: " + movie.overview)
-                .padding([.bottom, .trailing],3)
-            
+            .multilineTextAlignment(.center)
+            .fontDesign(.serif)
         }
-        .multilineTextAlignment(.center)
-        .fontDesign(.serif)
     }
 }
 
