@@ -32,6 +32,7 @@ struct MovieDetail: View {
                 }
                 .sheet(isPresented: $showReminderModal) {
                     ReminderModal(isPresented: $showReminderModal)
+                        .presentationDetents([.fraction(0.5)])
                 }
                 
                 AsyncImage(url: URL(string:"https://image.tmdb.org/t/p/w300" + movie.poster_path))
