@@ -20,13 +20,14 @@ struct ContentView: View {
                         Text("Upcoming Movies")
                             .font(.title)
                             .bold()
+                            .fontDesign(.serif)
                         
                     }
                     .frame(alignment: .leading)
                     VStack(alignment: .leading) {
                         ForEach((modelData.upcomingMovies.results)) { movie in
                             NavigationLink {
-                                MovieDetail()
+                                MovieDetail(movie: movie)
                             } label: {
                                 MovieCard(movie: movie)
                             }

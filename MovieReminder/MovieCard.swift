@@ -18,13 +18,14 @@ struct MovieCard: View {
                     .multilineTextAlignment(.leading)
                 Text(movie.release_date) .foregroundColor(.black)
             }
+            .fontDesign(.serif)
         }
     }
 }
 
 struct MovieCard_Previews: PreviewProvider {
     static let modelData = ModelData()
-    static let movieExample = Movie(results: [Movie.movie(id: 1, original_title: "Movie 1", genre_ids: [1], original_language: "en-US", release_date: "10 July 2023", adult: false, overview: "a movie", poster_path: "/qW4crfED8mpNDadSmMdi7ZDzhXF.jpg")], page: 1)
+    static let movieExample = Movie(results: [Movie.movie(id: 1, original_title: "Movie 1", genre_ids: [1], original_language: "en-US", release_date: "2023-07-10", adult: false, overview: "a movie", poster_path: "/qW4crfED8mpNDadSmMdi7ZDzhXF.jpg")], page: 1)
 
     static var previews: some View {
         MovieCard(movie: movieExample.results[0])
