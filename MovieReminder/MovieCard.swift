@@ -6,22 +6,29 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct MovieCard: View {
     @EnvironmentObject var modelData: ModelData
     var movie: Movie.movie
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string:"https://image.tmdb.org/t/p/w92" + movie.poster_path))
-            VStack (alignment: .leading){
-                Text(movie.original_title).font(.title2).foregroundColor(.black)
+                AsyncImage(url: URL(string:"https://image.tmdb.org/t/p/w92" + movie.poster_path))
+                VStack (alignment: .leading){
+                    Text(movie.original_title).font(.title2).foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-                Text(movie.release_date) .foregroundColor(.black)
-            }
-            .fontDesign(.serif)
+                    Text(movie.release_date) .foregroundColor(.black)
+                }
+                .fontDesign(.serif)
+            Spacer()
         }
+            .background(
+                Color(UIColor(Color.pink).withAlphaComponent(0.2))
+                    .background(Color.white)
+                )
     }
 }
+
 
 struct MovieCard_Previews: PreviewProvider {
     static let modelData = ModelData()
@@ -32,3 +39,4 @@ struct MovieCard_Previews: PreviewProvider {
             .environmentObject(modelData)
     }
 }
+

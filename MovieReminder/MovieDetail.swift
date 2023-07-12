@@ -17,10 +17,6 @@ struct MovieDetail: View {
                 VStack (alignment: .trailing){
                     HStack{
                         Spacer()
-                        /*Image(systemName: "bell")
-                            .foregroundColor(.blue)
-                        Button("Set Reminder") {
-                        }*/
                         Button(action: {
                             showReminderModal = true
                         }, label: {
@@ -31,7 +27,7 @@ struct MovieDetail: View {
                     .padding(.trailing)
                 }
                 .sheet(isPresented: $showReminderModal) {
-                    ReminderModal(isPresented: $showReminderModal)
+                    ReminderModal(isPresented: $showReminderModal, movie: movie)
                         .presentationDetents([.fraction(0.5)])
                 }
                 

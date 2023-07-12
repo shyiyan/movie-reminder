@@ -64,12 +64,12 @@
 				A1B6B8BA2A5BCB5F003E9FAC /* MovieCard.swift */,
 				A17789532A59A40300367E37 /* MovieReminderApp.swift */,
 				A1B6B8BC2A5BED46003E9FAC /* MovieDetail.swift */,
+				A1E827C62A5D291800D44AF4 /* ReminderModal.swift */,
 				A17789552A59A40300367E37 /* ContentView.swift */,
 				A1CE37CB2A5A93A0008D7F83 /* ModelData.swift */,
 				A1CE37C92A5A9140008D7F83 /* Movie.swift */,
 				A17789572A59A40300367E37 /* Assets.xcassets */,
 				A17789592A59A40300367E37 /* Preview Content */,
-				A1E827C62A5D291800D44AF4 /* ReminderModal.swift */,
 			);
 			path = MovieReminder;
 			sourceTree = "<group>";

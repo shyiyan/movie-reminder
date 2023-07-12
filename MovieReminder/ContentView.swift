@@ -30,6 +30,9 @@ struct ContentView: View {
                                 MovieDetail(movie: movie)
                             } label: {
                                 MovieCard(movie: movie)
+                                    .padding()
+                                    .cornerRadius(15)
+                                    .clipShape(Capsule())
                             }
                         }
                         
