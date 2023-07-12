@@ -78,29 +78,15 @@ struct ReminderModal: View {
                         calendar.timeZone = TimeZone.current
                         let releaseDate = getDate(dateStr: movie.release_date)
                         let notiDate = calendar.date(byAdding: .day, value: -7, to: releaseDate!)!
+                        
                         let comps = Calendar.current.dateComponents([.year, .month, .day], from: notiDate)
                         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
                         let request = UNNotificationRequest(identifier: UUID().uuidString, content: notiContent, trigger: trigger)
                         UNUserNotificationCenter.current().add(request)
-                        print(notiDate)
+
                     }
                     Button("Cancel", role: .cancel) {
-                        //notification content
-                        let notiContent = UNMutableNotificationContent()
-                        notiContent.title = "Upcoming movie: \(movie.original_title)"
-                        notiContent.subtitle = "\(movie.original_title) will be coming out in a week"
-                        notiContent.sound = UNNotificationSound.default
                         
-                        //notification trigger time
-                        var calendar = Calendar.current
-                        calendar.timeZone = TimeZone.current
-                        let releaseDate = getDate(dateStr: movie.release_date)
-                        let notiDate = calendar.date(byAdding: .day, value: -1, to: releaseDate!)!
-                        //let comps = Calendar.current.dateComponents([.year, .month, .day], from: Date().)
-                        let comps = Calendar.current.dateComponents([.year, .month, .day], from: notiDate)
-                        let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
-                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notiContent, trigger: trigger)
-                        UNUserNotificationCenter.current().add(request)
                     }
                     
                 } message: { details in
@@ -118,8 +104,26 @@ struct ReminderModal: View {
                        isPresented: $showingDayAlert,
                        presenting: dayAlert
                 ) { details in
-                    Button("Confirm") { }
-                    Button("Cancel", role: .cancel) { }
+                    Button("Confirm") {
+                        //notification content
+                        let notiContent = UNMutableNotificationContent()
+                        notiContent.title = "Upcoming movie: \(movie.original_title)"
+                        notiContent.subtitle = "\(movie.original_title) will be coming out in a day"
+                        notiContent.sound = UNNotificationSound.default
+                        
+                        //notification trigger time
+                        var calendar = Calendar.current
+                        calendar.timeZone = TimeZone.current
+                        let releaseDate = getDate(dateStr: movie.release_date)
+                        let notiDate = calendar.date(byAdding: .day, value: -1, to: releaseDate!)!
+                        let comps = Calendar.current.dateComponents([.year, .month, .day], from: notiDate)
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
+                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: notiContent, trigger: trigger)
+                        UNUserNotificationCenter.current().add(request)
+                    }
+                    Button("Cancel", role: .cancel) {
+                        
+                    }
                     
                 } message: { details in
                     Text(details.description)
