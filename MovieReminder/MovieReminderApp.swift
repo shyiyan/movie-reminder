@@ -10,6 +10,9 @@ import SwiftUI
 @main
 struct MovieReminderApp: App {
     var modelData = ModelData()
+    init() {
+        modelData.getMovieGenres()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()

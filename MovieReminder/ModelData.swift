@@ -11,6 +11,8 @@ import UIKit
 
 class ModelData: ObservableObject {
     @Published var upcomingMovies = Movie(results: [], page: 1)
+    @Published var movieGenres = MovieGenre(genres: [])
+    @Published var genreNumber = 0
     
     func auth() {
         var url = URLComponents(string: "https://api.themoviedb.org/3/configuration")!
@@ -56,6 +58,39 @@ class ModelData: ObservableObject {
                     do {
                         let decodedMovies = try JSONDecoder().decode(Movie.self, from: data)
                         self.upcomingMovies = decodedMovies
+                    } catch let error {
+                        print("Error decoding: ", error)
+                    }
+                }
+            }
+
+          }
+          dataTask.resume()
+        
+    }
+    
+    func getMovieGenres() {
+        var url = URLComponents(string: "https://api.themoviedb.org/3/genre/movie/list")!
+        url.queryItems = [
+            URLQueryItem(name: "api_key", value: "b53f7ea2bff201fb38cc948ea82c5fe4")
+        ]
+        let request = NSMutableURLRequest(url: url.url!)
+        request.httpMethod = "GET"
+        let dataTask = URLSession.shared.dataTask(with: request as URLRequest) {(data,response,error) in
+            if let error = error {
+                print("Request error: ", error)
+                return
+            }
+            
+            guard let response = response as?HTTPURLResponse else {return}
+            
+            if response.statusCode == 200 {
+                guard let data = data else {return}
+                DispatchQueue.main.async {
+                    do {
+                        let decodedGenres = try JSONDecoder().decode(MovieGenre.self, from: data)
+                        self.movieGenres = decodedGenres
+                        self.genreNumber = self.movieGenres.genres.count
                     } catch let error {
                         print("Error decoding: ", error)
                     }

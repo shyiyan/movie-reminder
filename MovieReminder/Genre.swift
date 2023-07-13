@@ -9,7 +9,7 @@ import Foundation
 
 struct MovieGenre: Decodable {
     var genres: [genre]
-    struct genre: Decodable, Identifiable {
+    struct genre: Decodable, Identifiable, Hashable {
         var id: Int
         var name: String
     }
